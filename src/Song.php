@@ -16,7 +16,7 @@ class Song
      */
     public $artist;
     /**
-     * @var string Artists separated into an array
+     * @var array Artists separated into an array
      */
     public $artists;
 
