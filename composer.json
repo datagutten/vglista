@@ -13,6 +13,8 @@
         }
     ],
     "autoload": {
-        "classmap": ["vglista.php"]
+      "psr-4": {
+        "datagutten\\vglista\\": "src/"
+      }
     }
 }
