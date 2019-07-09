@@ -60,6 +60,7 @@ class TopList
         $dom=new DOMDocument;
         @$dom->loadHTML($response->body);
         $this->xpath=new DOMXPath($dom);
+        $this->parse_list();
     }
 
     /**
