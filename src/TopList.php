@@ -127,6 +127,11 @@ class TopList
         return [$artist, $artists];
     }
 
+    function title()
+    {
+        return sprintf('VG-lista Topp %d Single uke %d %d', $this->limit, $this->week, $this->year);
+    }
+
     public function __toString()
     {
         $string = "Plass/Beste plass/Antall uker\n";
