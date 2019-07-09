@@ -4,11 +4,13 @@
 namespace datagutten\vglista;
 
 
+use datagutten\vglista\exceptions;
 use DOMDocument;
 use DOMElement;
 use DOMXPath;
 use Exception;
 use Requests;
+use Requests_Exception;
 
 class TopList
 {
@@ -34,6 +36,7 @@ class TopList
      * @param int $week Week
      * @param int $limit Get songs up to this rank
      * @throws Exception
+     * @throws exceptions\NoSongsFound
      */
     function __construct($year, $week, $limit = 20)
     {
@@ -44,20 +47,30 @@ class TopList
         $this->parse_list();
     }
 
+    /**
+     * @param $year
+     * @param $week
+     * @throws exceptions\NoSongsFound
+     * @throws Requests_Exception
+     */
     private function load($year, $week)
     {
         $response=Requests::get(sprintf('http://www.vglista.no/topplister/topp-20-single-%s-%02d/',$year,$week));
+        $response->throw_for_status();
         $dom=new DOMDocument;
         @$dom->loadHTML($response->body);
         $this->xpath=new DOMXPath($dom);
     }
 
     /**
+     * @throws exceptions\NoSongsFound
      * @throws Exception
      */
     function parse_list()
     {
         $songs = $this->xpath->query('.//div[@class="music_table"]/div');
+        if($songs->length==0)
+            throw new exceptions\NoSongsFound('No songs found');
         foreach ($songs as $song) {
             $song =  $this->parse_song($song);
             $this->songs[$song->rank] = $song;
@@ -69,6 +82,7 @@ class TopList
     /**
      * @param DOMElement $track
      * @return Song Track info
+     * @throws exceptions\ParseError
      * @throws Exception
      */
     function parse_song($track)
@@ -80,7 +94,7 @@ class TopList
 
         $track_title = $this->xpath->query('.//h2[@class="title"]/span', $track);
         if($track_title->length!=1)
-            throw new Exception('Unable to get title');
+            throw new exceptions\ParseError('Unable to get title');
         else
             $song->title = $track_title->item(0)->textContent;
         list($song->artist, $song->artists) = $this->artists($track);
