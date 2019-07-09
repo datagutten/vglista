@@ -25,6 +25,9 @@ class TopList
      */
     public $limit;
 
+    public $year;
+    public $week;
+
     /**
      * TopList constructor.
      * @param int $year Year
@@ -34,6 +37,8 @@ class TopList
      */
     function __construct($year, $week, $limit = 20)
     {
+        $this->week = $week;
+        $this->year = $year;
         $this->limit = $limit;
         $this->load($year, $week);
         $this->parse_list();
