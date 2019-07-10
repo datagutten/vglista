@@ -5,8 +5,7 @@ namespace datagutten\vglista;
 
 
 use datagutten\vglista\exceptions;
-use TidalSearch;
-use TidalError;
+use datagutten\Tidal;
 
 class TidalSong
 {
@@ -21,12 +20,12 @@ class TidalSong
      * TidalSong constructor.
      * @param Song $song
      * @param string $token Token for TIDAL
-     * @throws TidalError
+     * @throws Tidal\TidalError
      * @throws exceptions\NoSongsFound
      */
     function __construct(&$song, $token=null)
     {
-        $this->tidal = new TidalSearch();
+        $this->tidal = new Tidal\Search();
         $this->song = $song;
         if(empty($token))
             $this->tidal->token = $this->tidal->get_token();
@@ -47,12 +46,12 @@ class TidalSong
 
     /**
      * Search for the song on TIDAL
-     * @throws TidalError
+     * @throws Tidal\TidalError
      * @throws exceptions\NoSongsFound Thrown when song is not found on tidal
      */
     function lookup()
     {
-        $search_title = TidalSearch::remove_featured($this->song->title);
+        $search_title = Tidal\Search::remove_featured($this->song->title);
         $matches = $this->tidal->search_track($search_title);
 
         foreach ($matches['items'] as $match) {
