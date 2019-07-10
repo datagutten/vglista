@@ -4,41 +4,111 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "350ce3f253ac884f46ccddcde01f6748",
+    "content-hash": "ff02c5f58a42d951b2c6bdd037dbe922",
     "packages": [
         {
-            "name": "datagutten/tidal-tools",
-            "version": "v1.5.1",
+            "name": "datagutten/audio-metadata",
+            "version": "v2.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/datagutten/TIDALtools.git",
-                "reference": "bdd27ec98426e27e972e6b62743f135b779ad308"
+                "url": "https://github.com/datagutten/audio-metadata.git",
+                "reference": "6afecb8206f37f978a3d79c929a94e1f4a7dd8db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/datagutten/TIDALtools/zipball/bdd27ec98426e27e972e6b62743f135b779ad308",
-                "reference": "bdd27ec98426e27e972e6b62743f135b779ad308",
+                "url": "https://api.github.com/repos/datagutten/audio-metadata/zipball/6afecb8206f37f978a3d79c929a94e1f4a7dd8db",
+                "reference": "6afecb8206f37f978a3d79c929a94e1f4a7dd8db",
                 "shasum": ""
             },
             "require": {
-                "ext-json": "*",
-                "php": ">=5.3",
-                "rmccue/requests": "^1.0"
+                "datagutten/tools": "^1.1",
+                "symfony/process": "^4.3"
             },
             "type": "library",
             "autoload": {
                 "classmap": [
-                    "tidalinfo.class.php",
-                    "tidalsearch.class.php",
-                    "TidalError.php"
+                    "AudioMetadata.php",
+                    "AudioConvert.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-3.0-or-later"
             ],
+            "description": "Tools for working with metadata in audio files",
+            "time": "2019-07-10T09:44:35+00:00"
+        },
+        {
+            "name": "datagutten/tidal-tools",
+            "version": "v2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/datagutten/TIDALtools.git",
+                "reference": "d8d8de0d35614746e43656573dab018a72b17116"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/datagutten/TIDALtools/zipball/d8d8de0d35614746e43656573dab018a72b17116",
+                "reference": "d8d8de0d35614746e43656573dab018a72b17116",
+                "shasum": ""
+            },
+            "require": {
+                "datagutten/audio-metadata": "^2.1",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">=7.1",
+                "rmccue/requests": "^1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "datagutten\\Tidal\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
             "description": "Tools for fetching info from TIDAL",
-            "time": "2019-06-26T09:09:00+00:00"
+            "time": "2019-07-10T10:25:20+00:00"
+        },
+        {
+            "name": "datagutten/tools",
+            "version": "v1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/datagutten/tools.git",
+                "reference": "50ae2ca69b32beee09712e1b210772bae256e005"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/datagutten/tools/zipball/50ae2ca69b32beee09712e1b210772bae256e005",
+                "reference": "50ae2ca69b32beee09712e1b210772bae256e005",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "color.php",
+                    "dependcheck.php",
+                    "FileNotFoundException.php",
+                    "color.php",
+                    "pdo_helper.php",
+                    "DOMDocument_createElement_simple.php"
+                ],
+                "files": [
+                    "filnavn.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "description": "Tools used in my projects",
+            "time": "2019-06-09T13:53:16+00:00"
         },
         {
             "name": "rmccue/requests",
@@ -88,6 +158,239 @@
                 "sockets"
             ],
             "time": "2016-10-13T00:11:37+00:00"
+        },
+        {
+            "name": "symfony/polyfill-ctype",
+            "version": "v1.11.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-ctype.git",
+                "reference": "82ebae02209c21113908c229e9883c419720738a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/82ebae02209c21113908c229e9883c419720738a",
+                "reference": "82ebae02209c21113908c229e9883c419720738a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "suggest": {
+                "ext-ctype": "For best performance"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.11-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Ctype\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                },
+                {
+                    "name": "Gert de Pagter",
+                    "email": "BackEndTea@gmail.com"
+                }
+            ],
+            "description": "Symfony polyfill for ctype functions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "ctype",
+                "polyfill",
+                "portable"
+            ],
+            "time": "2019-02-06T07:57:58+00:00"
+        },
+        {
+            "name": "symfony/polyfill-mbstring",
+            "version": "v1.11.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-mbstring.git",
+                "reference": "fe5e94c604826c35a32fa832f35bd036b6799609"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/fe5e94c604826c35a32fa832f35bd036b6799609",
+                "reference": "fe5e94c604826c35a32fa832f35bd036b6799609",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "suggest": {
+                "ext-mbstring": "For best performance"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.11-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Mbstring\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for the Mbstring extension",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "mbstring",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2019-02-06T07:57:58+00:00"
+        },
+        {
+            "name": "symfony/process",
+            "version": "v4.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/process.git",
+                "reference": "856d35814cf287480465bb7a6c413bb7f5f5e69c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/process/zipball/856d35814cf287480465bb7a6c413bb7f5f5e69c",
+                "reference": "856d35814cf287480465bb7a6c413bb7f5f5e69c",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Process\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Process Component",
+            "homepage": "https://symfony.com",
+            "time": "2019-05-30T16:10:05+00:00"
+        },
+        {
+            "name": "twig/twig",
+            "version": "v2.11.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twigphp/Twig.git",
+                "reference": "699ed2342557c88789a15402de5eb834dedd6792"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/699ed2342557c88789a15402de5eb834dedd6792",
+                "reference": "699ed2342557c88789a15402de5eb834dedd6792",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0",
+                "symfony/polyfill-ctype": "^1.8",
+                "symfony/polyfill-mbstring": "^1.3"
+            },
+            "require-dev": {
+                "psr/container": "^1.0",
+                "symfony/debug": "^2.7",
+                "symfony/phpunit-bridge": "^3.4.19|^4.1.8|^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.11-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Twig_": "lib/"
+                },
+                "psr-4": {
+                    "Twig\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Armin Ronacher",
+                    "email": "armin.ronacher@active-4.com",
+                    "role": "Project Founder"
+                },
+                {
+                    "name": "Twig Team",
+                    "homepage": "https://twig.symfony.com/contributors",
+                    "role": "Contributors"
+                }
+            ],
+            "description": "Twig, the flexible, fast, and secure template language for PHP",
+            "homepage": "https://twig.symfony.com",
+            "keywords": [
+                "templating"
+            ],
+            "time": "2019-06-18T15:37:11+00:00"
         }
     ],
     "packages-dev": [],
@@ -96,6 +399,11 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "ext-json": "*",
+        "ext-dom": "*",
+        "ext-mbstring": "*",
+        "php": ">=7.1"
+    },
     "platform-dev": []
 }

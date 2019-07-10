@@ -3,7 +3,12 @@
     "description": "Get information from the Norwegian music chart VG-lista",
     "type": "library",
     "require": {
-        "datagutten/tidal-tools": "^1.5"
+        "datagutten/tidal-tools": "^2.0",
+        "ext-json": "*",
+        "ext-dom": "*",
+        "ext-mbstring": "*",
+        "php": ">=7.1",
+        "twig/twig": "^2.11"
     },
     "license": "GPL-3.0-or-later",
     "authors": [
